@@ -1,0 +1,32 @@
+@page
+@model MeshApp.Pages.Logs.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table table-striped">
+    @foreach (var item in Model.Logs)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.NodeId</td>
+            <td>@item.Type</td>
+            <td>@item.Value</td>
+            <td>@item.Timestamp</td>
+            <td>@item.Message</td>
+        </tr>
+    }
+</table>
+<div>
+    <ul class="pagination">
+        @for (var i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a asp-route-currentPage="@i" class="page-link">@i</a>
+            </li>
+        }
+    </ul>
+</div>

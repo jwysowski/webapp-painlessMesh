@@ -14,4 +14,6 @@ using Listener.Models;
         }
 
         public DbSet<Listener.Models.Log> Log { get; set; }
+
+        public DbSet<Listener.Models.Node> Node { get; set; }
     }

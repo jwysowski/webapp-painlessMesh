@@ -7,14 +7,29 @@
 <h1>Nodes</h1>
 
 <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Nodes[0].Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Nodes[0].NodeId)</th>
+            <th>@Html.DisplayNameFor(model => model.Nodes[0].Temperature)</th>
+            <th>@Html.DisplayNameFor(model => model.Nodes[0].Humidity)</th>
+            <th>@Html.DisplayNameFor(model => model.Nodes[0].LastUpdate)</th>
+            <th>@Html.DisplayNameFor(model => model.Nodes[0].TargetTemperature)</th>
+            <th>@Html.DisplayNameFor(model => model.Nodes[0].TargetTemperature)</th>
+            <th>@Html.DisplayNameFor(model => model.Nodes[0].InManualMode)</th>
+        </tr>
+    </thead>
     @foreach (var item in Model.Nodes)
     {
         <tr>
-            <td>@item.Id</td>
-            <td>@item.NodeId</td>
-            <td>@item.Temperature</td>
-            <td>@item.Humidity</td>
-            <td>@item.LastUpdate</td>
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.NodeId)</td>
+            <td>@Html.DisplayFor(modelItem => item.Temperature)</td>
+            <td>@Html.DisplayFor(modelItem => item.Humidity)</td>
+            <td>@Html.DisplayFor(modelItem => item.LastUpdate)</td>
+            <td>@Html.DisplayFor(modelItem => item.TargetTemperature)</td>
+            <td>@Html.DisplayFor(modelItem => item.TargetHumidity)</td>
+            <td>@Html.DisplayFor(modelItem => item.InManualMode)</td>
         </tr>
     }
 </table>

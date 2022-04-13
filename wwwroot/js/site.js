@@ -3,9 +3,11 @@
 
 // Write your JavaScript code.
 function refresh() {
-    $.get("Nodes", function(result) {
-        window.location.reload();
+    $.get("Nodes/Monitor", function(result) {
+        if (!formActive) {
+            window.location.reload();
+        }
     });
 }
 
-setInterval(refresh, 3000);
+// setInterval(refresh, 3000);

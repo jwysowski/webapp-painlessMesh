@@ -2,12 +2,14 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
 function refresh() {
-    $.get("Nodes/Monitor", function(result) {
-        if (!formActive) {
+    let x = window.location.pathname; 
+    if (window.location.pathname === "/Nodes") {
+        $.get("Nodes", function(result) {
             window.location.reload();
-        }
-    });
+        });
+    }
 }
 
-// setInterval(refresh, 3000);
+setInterval(refresh, 3000);

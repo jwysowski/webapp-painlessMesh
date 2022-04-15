@@ -2,17 +2,24 @@ namespace MessageType
 {
     public class MsgType
     {
-        public string Type { get; set; } = string.Empty;
+        public bool IsTemperature { get; set; } = false;
         public bool InManualMode { get; set; } = false;
-        public bool SetTemperature { get; set; } = false;
-        public bool SetHumidity { get; set; } = false;
+        public bool IsRising { get; set; } = false;
 
-        public MsgType(string type, bool inManualMode, bool setTemperature, bool setHumidity)
+        public MsgType(bool isTemperature, bool inManualMode, bool isRising)
         {
-            Type = type;
+            IsTemperature = isTemperature;
             InManualMode = inManualMode;
-            SetTemperature = setTemperature;
-            SetHumidity = setHumidity;
+            IsRising = isRising;
+        }
+
+        public string GetString()
+        {
+            string mode = InManualMode ? "1" : "0";
+            string valueType = IsTemperature ? "0" : "1";
+            string isRising = IsRising ? "1" : "0";
+
+            return mode + valueType + isRising;
         }
     }
 }

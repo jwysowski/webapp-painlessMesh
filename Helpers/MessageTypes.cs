@@ -4,39 +4,22 @@ namespace MessageTypes
 {
     public class MessageTypesLUT
     {
-        private Dictionary<char, MsgType> _types;
+        private Dictionary<string, char> _types;
 
         public MessageTypesLUT()
         {
-            _types = new Dictionary<char, MsgType>();
-            _types.Add('0', new MsgType("Temperature", false, true, false));
-            _types.Add('1', new MsgType("Humidity", false, false, true));
-            _types.Add('2', new MsgType("Set temperature to auto", true, true, false));
-            _types.Add('3', new MsgType("Set temperature rising", true, true, false));
-            _types.Add('4', new MsgType("Set temperature falling", true, true, false));
-            _types.Add('5', new MsgType("Set humidity to auto", true, false, true));
-            _types.Add('6', new MsgType("Set humidity rising", true, false, true));
-            _types.Add('7', new MsgType("Set humidity falling", true, false, true));
+            _types = new Dictionary<string, char>();
+            _types.Add(new MsgType(true, false, false).GetString(), '2');   // "Set temperature to auto"
+            _types.Add(new MsgType(true, true, true).GetString(), '3');  // "Set temperature rising"
+            _types.Add(new MsgType(true, true, false).GetString(), '4');  // "Set temperature falling"
+            _types.Add(new MsgType(false, false, false).GetString(), '5');  // "Set humidity to auto"
+            _types.Add(new MsgType(false, true, true).GetString(), '6');  // "Set humidity rising"
+            _types.Add(new MsgType(false, true, false).GetString(), '7');  // "Set humidity falling"
         }
 
-        public string GetMessageType(char key)
+        public char GetMessageType(string key)
         {
-            return _types[key].Type;
-        }
-
-        public bool GetMode(char key)
-        {
-            return _types[key].InManualMode;
-        }
-
-        public bool SetTemperature(char key)
-        {
-            return _types[key].SetTemperature;
-        }
-
-        public bool SetHumidity(char key)
-        {
-            return _types[key].SetHumidity;
+            return _types[key];
         }
     }
 }

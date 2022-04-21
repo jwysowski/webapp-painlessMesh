@@ -91,14 +91,14 @@ namespace MeshApp.Pages.Nodes
                                 : node.Humidity;
 
             bool isRising = isTemperature ?
-                                currentValue > node.Temperature
-                                : currentValue > node.Humidity;
+                                TargetValue > node.Temperature
+                                : TargetValue > node.Humidity;
 
             char msgType = _typesLUT.GetMessageType(
                 new MsgType(isTemperature, TargetInManualMode, isRising).GetString());
 
-            message.Append(msgType);
-            message = message + TargetValue.ToString();
+            message = message + msgType.ToString();
+            message = message + string.Format("{0:N2}", TargetValue);
             message = message + TargetNodeId;
             message = message + Checksum(message);
             message = message + System.Environment.NewLine;
@@ -109,6 +109,7 @@ namespace MeshApp.Pages.Nodes
         private string Checksum(string msg)
         {
             var sum = msg.Sum(c => c);
+            sum = sum % 256;
             return sum.ToString("x");
         }
 

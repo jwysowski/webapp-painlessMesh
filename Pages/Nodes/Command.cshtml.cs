@@ -94,6 +94,8 @@ namespace MeshApp.Pages.Nodes
                                 TargetValue > node.Temperature
                                 : TargetValue > node.Humidity;
 
+            isRising = TargetInManualMode ? isRising : false;
+
             char msgType = _typesLUT.GetMessageType(
                 new MsgType(isTemperature, TargetInManualMode, isRising).GetString());
 

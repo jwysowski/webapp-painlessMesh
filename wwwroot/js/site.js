@@ -4,7 +4,6 @@
 // Write your JavaScript code.
 
 function refresh() {
-    let x = window.location.pathname; 
     if (window.location.pathname === "/Nodes") {
         $.get("Nodes", function(result) {
             window.location.reload();
